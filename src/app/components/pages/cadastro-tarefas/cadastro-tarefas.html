@@ -1,2 +1,53 @@
 <h4 class="text-primary">Cadastro de Tarefas</h4>
 <p>Preencha os dados da tarefa e clique em salvar.</p>
+
+<form [formGroup]="formCadastro" (ngSubmit)="cadastrarTarefa()">
+
+    <div class="mb-3">
+        <label>Nome da Tarefa:</label>
+        <input type="text" class="form-control" formControlName="nome"/>
+    </div>
+
+    <div class="mb-3">
+        <label>Data da Tarefa:</label>
+        <input type="date" class="form-control" formControlName="data"/>
+    </div>
+
+    <div class="mb-3">
+        <label>Hora da Tarefa:</label>
+        <input type="time" class="form-control" formControlName="hora"/>
+    </div>
+
+    <div class="mb-3">
+        <label>Categoria da tarefa:</label>
+        <select class="form-select" formControlName="categoria">
+            <option value="">Escolha uma opção</option>            
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label>Prioridade da tarefa:</label>
+        <select class="form-select" formControlName="prioridade">
+            <option value="">Escolha uma opção</option>            
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label>Finalizado:</label>
+        <select class="form-select" formControlName="finalizado">
+            <option value="">Escolha uma opção</option>            
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label>Comentários:</label>
+        <textarea class="form-control" formControlName="comentarios"></textarea>
+    </div>
+
+    <div class="mb-3">
+        <input type="submit" 
+            [disabled]="formCadastro.invalid"
+            class="btn btn-success" 
+            value="Realizar Cadastro"/>
+    </div>
+</form>
