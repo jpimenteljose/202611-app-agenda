@@ -1,53 +1,111 @@
-<h4 class="text-primary">Cadastro de Tarefas</h4>
+<h4 class="text-primary">Cadastro de tarefas</h4>
 <p>Preencha os dados da tarefa e clique em salvar.</p>
+
+@if(mensagem()) {
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>{{ mensagem() }}</strong>
+        <button type="button" class="btn-close" (click)="mensagem.set('')" aria-label="Close"></button>
+    </div>
+}
 
 <form [formGroup]="formCadastro" (ngSubmit)="cadastrarTarefa()">
 
     <div class="mb-3">
-        <label>Nome da Tarefa:</label>
+        <label>Nome da tarefa:</label>
         <input type="text" class="form-control" formControlName="nome"/>
+        @if(formCadastro.get('nome')?.touched && formCadastro.get('nome')?.invalid) {
+            <span class="text-danger">
+                O nome da tarefa é obrigatório e deve ter pelo menos 6 caracteres.
+            </span>
+        }
     </div>
 
     <div class="mb-3">
-        <label>Data da Tarefa:</label>
+        <label>Data da tarefa:</label>
         <input type="date" class="form-control" formControlName="data"/>
+        @if(formCadastro.get('data')?.touched && formCadastro.get('data')?.invalid) {
+            <span class="text-danger">
+                A data da tarefa é obrigatória.
+            </span>
+        }
     </div>
 
     <div class="mb-3">
-        <label>Hora da Tarefa:</label>
+        <label>Hora da tarefa:</label>
         <input type="time" class="form-control" formControlName="hora"/>
+        @if(formCadastro.get('hora')?.touched && formCadastro.get('hora')?.invalid) {
+            <span class="text-danger">
+                A hora da tarefa é obrigatória.
+            </span>
+        }
     </div>
 
     <div class="mb-3">
         <label>Categoria da tarefa:</label>
         <select class="form-select" formControlName="categoria">
-            <option value="">Escolha uma opção</option>            
+            <option value="">Escolha uma opção</option>    
+            @for(item of categorias(); track item) {
+                <option value="{{ item }}">
+                    {{ item }}
+                </option>
+            }        
         </select>
+        @if(formCadastro.get('categoria')?.touched && formCadastro.get('categoria')?.invalid) {
+            <span class="text-danger">
+                A categoria da tarefa é obrigatória.
+            </span>
+        }
     </div>
 
     <div class="mb-3">
         <label>Prioridade da tarefa:</label>
         <select class="form-select" formControlName="prioridade">
-            <option value="">Escolha uma opção</option>            
+            <option value="">Escolha uma opção</option>      
+            @for(item of prioridades(); track item) {
+                <option value="{{ item }}">
+                    {{ item }}
+                </option>
+            }                  
         </select>
+        @if(formCadastro.get('prioridade')?.touched && formCadastro.get('prioridade')?.invalid) {
+            <span class="text-danger">
+                A prioridade da tarefa é obrigatória.
+            </span>
+        }
     </div>
 
     <div class="mb-3">
         <label>Finalizado:</label>
         <select class="form-select" formControlName="finalizado">
-            <option value="">Escolha uma opção</option>            
+            <option value="">Escolha uma opção</option>    
+            @for(item of opcoesFinalizado(); track item) {
+                <option value="{{ item.valor }}">
+                    {{ item.descricao }}
+                </option>
+            }        
         </select>
+        @if(formCadastro.get('finalizado')?.touched && formCadastro.get('finalizado')?.invalid) {
+            <span class="text-danger">
+                Informe se a tarefa está finalizada.
+            </span>
+        }
     </div>
 
     <div class="mb-3">
         <label>Comentários:</label>
         <textarea class="form-control" formControlName="comentarios"></textarea>
+        @if(formCadastro.get('comentarios')?.touched && formCadastro.get('comentarios')?.invalid) {
+            <span class="text-danger">
+                Informe algum comentário para esta tarefa.
+            </span>
+        }
     </div>
 
     <div class="mb-3">
         <input type="submit" 
             [disabled]="formCadastro.invalid"
             class="btn btn-success" 
-            value="Realizar Cadastro"/>
+            value="Realizar cadastro"/>
     </div>
+
 </form>

@@ -1,5 +1,22 @@
 <h4 class="text-primary">Consulta de tarefas</h4>
-<p>Visualize e gerencie suas tarefas cadastradas.</p>
+<p>Informe o período de datas para visualizar as tarefas de sua agenda.</p>
+
+<form [formGroup]="formConsulta" (ngSubmit)="consultarTarefas()">
+
+    <div class="row mb-3">
+        <div class="col-md-3">
+            <input type="date" class="form-control" formControlName="dataMin"/>
+        </div>
+        <div class="col-md-3">
+            <input type="date" class="form-control" formControlName="dataMax"/>
+        </div>
+        <div class="col-md-6">
+            <input type="submit" class="btn btn-success shadow" value="Pesquisar tarefas"
+                [disabled]="formConsulta.invalid"/>
+        </div>
+    </div>
+
+</form>
 
 <table class="table table-sm table-hover">
     <thead>
@@ -17,16 +34,21 @@
     <tbody>
         @for(item of tarefas(); track item.id) {
             <tr>
-                <td>{{ item.nome }}</td>
-                <td>{{ item.data }}</td>
+                <td>{{ item.nome | uppercase }}</td>
+                <td>{{ item.data | date : 'dd/MM/yyyy' }}</td>
                 <td>{{ item.hora }}</td>
                 <td>{{ item.categoria }}</td>
                 <td>{{ item.prioridade }}</td>
-                <td>{{ item.finalizado }}</td>
+                <td>{{ item.finalizado ? 'SIM' : 'NÃO' }}</td>
                 <td>{{ item.comentarios }}</td>
                 <td>
-                    <button class="btn btn-sm btn-outline-primary me-1">Editar</button>
-                    <button class="btn btn-sm btn-outline-danger">Excluir</button>
+                    <button class="btn btn-sm btn-outline-primary me-1">
+                        Editar
+                    </button>
+                    <button class="btn btn-sm btn-outline-danger"
+                        (click)="excluirTarefa(item.id)">
+                        Excluir
+                    </button>
                 </td>
             </tr>
         }

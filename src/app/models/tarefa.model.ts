@@ -4,7 +4,7 @@
 */
 export interface Tarefa {
     
-    id: number;         // identificador único da tarefa
+    id: string;         // identificador único da tarefa
     nome: string;       // nome ou título da tarefa
     data: string;       // data da criação ou prazo da tarefa
     hora: string;       // horas da criação ou prazo da tarefa

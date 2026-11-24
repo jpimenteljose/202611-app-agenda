@@ -1,14 +1,45 @@
 {
-    "tarefas": [
-        {
-            "id" : 1,
-            "nome" : "Estudar Angular",
-            "data" : "2026-11-13",
-            "hora" : "07:00",
-            "categoria" : "Estudos",
-            "prioridade" : "Alta",
-            "finalizado" : false,
-            "comentarios" : "Estudar integração do Angular com o backend"
-        }
-    ]
+  "tarefas": [
+    {
+      "id": "1",
+      "nome": "Estudar Angular",
+      "data": "2026-11-13",
+      "hora": "07:00",
+      "categoria": "Estudos",
+      "prioridade": "Alta",
+      "finalizado": false,
+      "comentarios": "Estudar integração do Angular com o backend"
+    },
+    {
+      "id": "0PvrIuvealo",
+      "nome": "Refazer a aula de Arquiteto de IA em .NET",
+      "data": "2026-11-18",
+      "hora": "15:00",
+      "categoria": "Estudo",
+      "prioridade": "Alta",
+      "finalizado": false,
+      "comentarios": "Refazer a aula 1"
+    },
+    {
+      "id": "IeN7Iuwy6zY",
+      "nome": "Refazer aula de Angular",
+      "data": "2026-11-24",
+      "hora": "14:33",
+      "categoria": "Estudo",
+      "prioridade": "Alta",
+      "finalizado": false,
+      "comentarios": "Assistir a aula que eu faltei"
+    },
+    {
+      "id": "K-S19zwoFMw",
+      "nome": "Academia",
+      "data": "2026-11-24",
+      "hora": "19:00",
+      "categoria": "Saúde",
+      "prioridade": "Alta",
+      "finalizado": false,
+      "comentarios": "Esteira e pernas"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
