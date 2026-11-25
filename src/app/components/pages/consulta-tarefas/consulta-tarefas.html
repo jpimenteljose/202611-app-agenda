@@ -39,10 +39,18 @@
                 <td>{{ item.hora }}</td>
                 <td>{{ item.categoria }}</td>
                 <td>{{ item.prioridade }}</td>
-                <td>{{ item.finalizado ? 'SIM' : 'NÃO' }}</td>
+                <td>
+                    @if(item.finalizado) {
+                        <span class="text-success">SIM</span>
+                    }
+                    @else {
+                        <span class="text-danger">NÃO</span>
+                    }                    
+                </td>
                 <td>{{ item.comentarios }}</td>
                 <td>
-                    <button class="btn btn-sm btn-outline-primary me-1">
+                    <button class="btn btn-sm btn-outline-primary me-1"
+                        [routerLink]="['/pages/edicao-tarefa', item.id]">
                         Editar
                     </button>
                     <button class="btn btn-sm btn-outline-danger"

@@ -3,12 +3,14 @@ import { TarefaService } from '../../../services/tarefa.service';
 import { Tarefa } from '../../../models/tarefa.model';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 
 @Component({
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterLink
   ],
   selector: 'app-consulta-tarefas',
   styleUrl: './consulta-tarefas.css',
@@ -79,5 +81,11 @@ export class ConsultaTarefas {
 
         });
     }
+  }
+
+  // função par editar uma tarefa selecionada
+  editarTarefa(id : string) {
+    
+    // executar a edição da tarefa na API
   }
 }

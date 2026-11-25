@@ -7,7 +7,7 @@
       "hora": "07:00",
       "categoria": "Estudos",
       "prioridade": "Alta",
-      "finalizado": false,
+      "finalizado": "false",
       "comentarios": "Estudar integração do Angular com o backend"
     },
     {
@@ -22,7 +22,7 @@
     },
     {
       "id": "IeN7Iuwy6zY",
-      "nome": "Refazer aula de Angular",
+      "nome": "Refazer aula de Angular Aula 6",
       "data": "2026-11-24",
       "hora": "14:33",
       "categoria": "Estudo",
@@ -37,7 +37,7 @@
       "hora": "19:00",
       "categoria": "Saúde",
       "prioridade": "Alta",
-      "finalizado": false,
+      "finalizado": "true",
       "comentarios": "Esteira e pernas"
     }
   ],

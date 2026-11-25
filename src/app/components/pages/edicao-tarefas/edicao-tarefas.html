@@ -1,1 +1,111 @@
-<p>edicao-tarefas works!</p>
+<h4 class="text-primary">Edição de tarefas</h4>
+<p>Preencha os dados da tarefa e clique em salvar.</p>
+
+@if(mensagem()) {
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>{{ mensagem() }}</strong>
+        <button type="button" class="btn-close" (click)="mensagem.set('')" aria-label="Close"></button>
+    </div>
+}
+
+<form [formGroup]="formEdicao" (ngSubmit)="editarTarefa()">
+
+    <div class="mb-3">
+        <label>Nome da tarefa:</label>
+        <input type="text" class="form-control" formControlName="nome"/>
+        @if(formEdicao.get('nome')?.touched && formEdicao.get('nome')?.invalid) {
+            <span class="text-danger">
+                O nome da tarefa é obrigatório e deve ter pelo menos 6 caracteres.
+            </span>
+        }
+    </div>
+
+    <div class="mb-3">
+        <label>Data da tarefa:</label>
+        <input type="date" class="form-control" formControlName="data"/>
+        @if(formEdicao.get('data')?.touched && formEdicao.get('data')?.invalid) {
+            <span class="text-danger">
+                A data da tarefa é obrigatória.
+            </span>
+        }
+    </div>
+
+    <div class="mb-3">
+        <label>Hora da tarefa:</label>
+        <input type="time" class="form-control" formControlName="hora"/>
+        @if(formEdicao.get('hora')?.touched && formEdicao.get('hora')?.invalid) {
+            <span class="text-danger">
+                A hora da tarefa é obrigatória.
+            </span>
+        }
+    </div>
+
+    <div class="mb-3">
+        <label>Categoria da tarefa:</label>
+        <select class="form-select" formControlName="categoria">
+            <option value="">Escolha uma opção</option>    
+            @for(item of categorias(); track item) {
+                <option value="{{ item }}">
+                    {{ item }}
+                </option>
+            }        
+        </select>
+        @if(formEdicao.get('categoria')?.touched && formEdicao.get('categoria')?.invalid) {
+            <span class="text-danger">
+                A categoria da tarefa é obrigatória.
+            </span>
+        }
+    </div>
+
+    <div class="mb-3">
+        <label>Prioridade da tarefa:</label>
+        <select class="form-select" formControlName="prioridade">
+            <option value="">Escolha uma opção</option>      
+            @for(item of prioridades(); track item) {
+                <option value="{{ item }}">
+                    {{ item }}
+                </option>
+            }                  
+        </select>
+        @if(formEdicao.get('prioridade')?.touched && formEdicao.get('prioridade')?.invalid) {
+            <span class="text-danger">
+                A prioridade da tarefa é obrigatória.
+            </span>
+        }
+    </div>
+
+    <div class="mb-3">
+        <label>Finalizado:</label>
+        <select class="form-select" formControlName="finalizado">
+            <option value="">Escolha uma opção</option>    
+            @for(item of opcoesFinalizado(); track item) {
+                <option value="{{ item.valor }}">
+                    {{ item.descricao }}
+                </option>
+            }        
+        </select>
+        @if(formEdicao.get('finalizado')?.touched && formEdicao.get('finalizado')?.invalid) {
+            <span class="text-danger">
+                Informe se a tarefa está finalizada.
+            </span>
+        }
+    </div>
+
+    <div class="mb-3">
+        <label>Comentários:</label>
+        <textarea class="form-control" formControlName="comentarios"></textarea>
+        @if(formEdicao.get('comentarios')?.touched && formEdicao.get('comentarios')?.invalid) {
+            <span class="text-danger">
+                Informe algum comentário para esta tarefa.
+            </span>
+        }
+    </div>
+
+    <div class="mb-3">
+        <input type="submit" 
+            [disabled]="formEdicao.invalid"
+            class="btn btn-success" 
+            value="Realizar cadastro"/>
+    </div>
+
+</form>

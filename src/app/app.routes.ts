@@ -3,6 +3,7 @@ import { Dashboard } from './components/pages/dashboard/dashboard';
 import { CadastroTarefas } from './components/pages/cadastro-tarefas/cadastro-tarefas';
 import { ConsultaTarefas } from './components/pages/consulta-tarefas/consulta-tarefas';
 import { Notfound } from './components/errors/notfound/notfound';
+import { EdicaoTarefas } from './components/pages/edicao-tarefas/edicao-tarefas';
 
 export const routes: Routes = [
     {
@@ -16,6 +17,10 @@ export const routes: Routes = [
     {
         path: 'pages/consulta-tarefas', // rota
         component: ConsultaTarefas      // componente que será renderizado
+    },
+    {
+        path: 'pages/edicao-tarefa/:id', // rota
+        component: EdicaoTarefas      // componente que será renderizado
     },
     {
         path: '',                       // rota padrão
